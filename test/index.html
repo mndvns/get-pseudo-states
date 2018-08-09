@@ -25,7 +25,7 @@
           if (!expected) pseudo = pseudo.slice(1)
           let sel = el.tagName.toLowerCase()
           if (el.className) sel += `.${el.className}`
-          const label = ` (${event}) ${sel}:${pseudo}`
+          const label = `(${event}) ${sel}:${pseudo}`
           el.addEventListener(event, () => {
             const result = test(el)
             if (result[pseudo] === expected) {
