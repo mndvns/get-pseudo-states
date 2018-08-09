@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main>
+      <button>button</button>
+      <button class="bg-blue">button.bg-blue</button>
+    </main>
+    <script src="./main.js"></script>
+    <script>
+      const test = window.lib.default
+      const els = document.querySelectorAll('button')
+      const events = {
+        click: 'hover',
+        focus: 'focus',
+        blur: '!focus',
+        mouseenter: 'hover',
+        mouseleave: '!hover',
+      }
+      Array.from(els).forEach(el => {
+        for (const event in events) {
+          let pseudo = events[event]
+          const expected = !pseudo.startsWith('!')
+          if (!expected) pseudo = pseudo.slice(1)
+          let sel = el.tagName.toLowerCase()
+          if (el.className) sel += `.${el.className}`
+          const label = ` (${event}) ${sel}:${pseudo}`
+          el.addEventListener(event, () => {
+            const result = test(el)
+            if (result[pseudo] === expected) {
+              console.log(label, result)
+            } else {
+              console.error(label, result)
+            }
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

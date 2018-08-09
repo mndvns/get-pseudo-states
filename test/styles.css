@@ -1,0 +1,13 @@
+button {
+  background-color: gray;
+  color: white;
+}
+
+.unrelated,
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-blue:hover {
+  background-color: black;
+}

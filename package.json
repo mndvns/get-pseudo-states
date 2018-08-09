@@ -1,0 +1,20 @@
+{
+  "name": "get-pseudo-states",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Michael Andrew Vanasse <mail@mndvns.com> (http://mndvns.com/)",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc src/index.ts --target es5 --module commonjs --lib es5,dom --sourceMap true --outDir lib -w",
+    "test": "run-p -l build test:build test:serve",
+    "test:build": "webpack index.js --output-path test --output-library lib --output-library-target global --mode development -w",
+    "test:serve": "serve test"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3",
+    "serve": "^9.4.0",
+    "typescript": "^3.0.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
+  }
+}
